@@ -9,6 +9,7 @@ const second = readFileSync(file2, 'utf8')
 console.log(first)
 console.log(second)
 
-const newFile = writeFileSync("newFile.txt", "Hello from newFile")
+const newFile = writeFileSync("newFile.txt", "Hello from newFile",
+    {flag: 'a'})
 
 console.log(readFileSync("./newFile.txt", 'utf8'))
