@@ -1,11 +1,18 @@
 const http = require('http')
+const {readFileSync} = require('fs')
 const server = http.createServer((req, res) => {
     console.log("Request received.");
-    // about page
+    if (req.url == '/') {
+        const content = readFileSync("./index.html")
+        res.writeHead(200, {'content-type': 'text/html'});
+        res.write(content);
+        res.end();
+    } else
+        // about page
     if (req.url == "/about") {
         res.writeHead(200, {'content-type': 'text/html'});
         res.write("<h1> About Page </h1>")
-    }else
+    } else
         // home page
     if (req.url == "/home") {
         res.writeHead(200, {'content-type': 'text/html'});
