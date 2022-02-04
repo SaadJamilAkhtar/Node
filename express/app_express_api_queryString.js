@@ -17,7 +17,7 @@ app.get("/api/students", (req, res) => {
             return student.courses.includes(Number(courses));
         })
     }
-    res.json(students)
+    res.status(200).json(students)
 });
 
 app.get("/api/courses", (req, res) => {
