@@ -4,8 +4,7 @@ const app = express()
 const data = require('./data_')
 
 app.get('/', (req, res) => {
-    console.log("Request received...")
-    res.send("<h1><a href='/api/students'>Students</a></h1>" +
+    return res.send("<h1><a href='/api/students'>Students</a></h1>" +
         "<h2><a href='/api/courses'>Courses</a></h2>");
 })
 
@@ -17,7 +16,10 @@ app.get("/api/students", (req, res) => {
             return student.courses.includes(Number(courses));
         })
     }
-    res.status(200).json(students)
+    if (students.length < 1) {
+        return res.status(200).json({success: true, data: []});
+    }
+    return res.status(200).json({success: true, data: students})
 });
 
 app.get("/api/courses", (req, res) => {
