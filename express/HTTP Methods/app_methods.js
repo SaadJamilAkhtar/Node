@@ -6,6 +6,8 @@ const _ = require('lodash');
 
 // parse form data
 app.use(express.urlencoded({extended: false}))
+// parse json
+app.use(express.json())
 
 app.get('/api/students', (req, res) => {
     res.status(200).json(data.students)
